@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("config")
 public class ConfigurationController {
 
-    private final ConfigurationServiceImpl configurationService;
+    private final ConfigurationService configurationService;
 
     @GetMapping("hello")
     public String getAlert(){
