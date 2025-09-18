@@ -1,8 +1,10 @@
 package edu.nexovaitsolutions.poc.repository;
 
+import edu.nexovaitsolutions.poc.entity.DBEntity;
 
-import edu.nexovaitsolutions.poc.dto.DB;
+import java.util.List;
 
 public interface ConfigurationRepository {
-    public int save(DB db);
+    public int save(DBEntity db);
+    List<DBEntity> findAll();
 }

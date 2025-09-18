@@ -8,9 +8,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("config")
+@CrossOrigin
 public class ConfigurationController {
 
     private final ConfigurationService configurationService;
@@ -28,6 +31,9 @@ public class ConfigurationController {
         }else{
             return ResponseEntity.ok("Not Saved");
         }
-
+    }
+    @GetMapping("db/find-all")
+    public List<DB> findAll(){
+        return configurationService.findAll();
     }
 }
