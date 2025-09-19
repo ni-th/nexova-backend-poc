@@ -21,7 +21,7 @@ public class ConfigurationRepositoryImpl implements ConfigurationRepository {
 
     @Override
     public List<DBEntity> findAll() {
-        String sql = "SELECT * FROM databases_config";
+        String sql = "SELECT * FROM databases_config ORDER BY database_name ASC";
         return jdbcTemplate.query(sql,new BeanPropertyRowMapper<>(DBEntity.class));
     }
 }
