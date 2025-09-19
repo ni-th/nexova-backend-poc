@@ -13,13 +13,6 @@ import java.util.Map;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(EmailNotValidException.class)
-    ResponseEntity<ErrorResponse> emailNotValidException(EmailNotValidException e){
-        ErrorResponse response = new ErrorResponse();
-        response.setMessage(e.getMessage());
-        return new ResponseEntity<>(response, HttpStatus.OK);
-    }
-
 //    Handle all errors validated by spring validation
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, String>> handleValidationExceptions(MethodArgumentNotValidException ex) {
