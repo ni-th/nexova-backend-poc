@@ -14,28 +14,4 @@ public class DB {
     private Integer port;
     private String password;
     private String databaseName;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public String getHost() {
-        return host;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public Integer getPort() {
-        return port;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String getDatabaseName() {
-        return databaseName;
-    }
 }
