@@ -1,9 +1,7 @@
 package edu.nexovaitsolutions.poc.controller;
 
-
 import edu.nexovaitsolutions.poc.dto.DB;
 import edu.nexovaitsolutions.poc.service.ConfigurationService;
-import edu.nexovaitsolutions.poc.service.impl.ConfigurationServiceImpl;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -19,13 +17,8 @@ public class ConfigurationController {
 
     private final ConfigurationService configurationService;
 
-    @GetMapping("hello")
-    public String getAlert(){
-        return "Hello";
-    }
-
     @PostMapping("db/add")
-    public ResponseEntity<?> addDB(@Valid @RequestBody DB db){
+    public ResponseEntity<String> addDB(@Valid @RequestBody DB db){
         int save = configurationService.save(db);
         if (save>0){
             return ResponseEntity.ok("Saved");
@@ -36,5 +29,12 @@ public class ConfigurationController {
     @GetMapping("db/find-all")
     public List<DB> findAll(){
         return configurationService.findAll();
+    }
+
+    @DeleteMapping("db/delete/{id}")
+    public ResponseEntity<String> deleteById(@PathVariable Integer id){
+        if (configurationService.deleteById(id) > 0){
+            return ResponseEntity.ok("DB deleted successfully !");
+        }return ResponseEntity.ok("DB not deleted");
     }
 }

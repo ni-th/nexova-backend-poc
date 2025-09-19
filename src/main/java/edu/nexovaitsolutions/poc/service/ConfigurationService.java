@@ -5,6 +5,7 @@ import edu.nexovaitsolutions.poc.dto.DB;
 import java.util.List;
 
 public interface ConfigurationService {
-    public int save(DB db);
+    int save(DB db);
     List<DB> findAll();
+    int deleteById(Integer id);
 }

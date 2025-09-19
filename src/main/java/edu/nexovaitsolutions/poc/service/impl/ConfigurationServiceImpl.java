@@ -31,4 +31,9 @@ public class ConfigurationServiceImpl implements ConfigurationService {
         });
         return dbList;
     }
+
+    @Override
+    public int deleteById(Integer id) {
+        return configurationRepository.deleteByID(id);
+    }
 }

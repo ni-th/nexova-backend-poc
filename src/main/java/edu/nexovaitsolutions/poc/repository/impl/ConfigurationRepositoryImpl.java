@@ -24,4 +24,10 @@ public class ConfigurationRepositoryImpl implements ConfigurationRepository {
         String sql = "SELECT * FROM databases_config ORDER BY database_name ASC";
         return jdbcTemplate.query(sql,new BeanPropertyRowMapper<>(DBEntity.class));
     }
+
+    @Override
+    public int deleteByID(Integer id) {
+        String sql = "DELETE FROM databases_config WHERE id = ?";
+        return jdbcTemplate.update(sql,id);
+    }
 }
