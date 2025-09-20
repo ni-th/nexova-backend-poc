@@ -36,4 +36,9 @@ public class ConfigurationServiceImpl implements ConfigurationService {
     public int deleteById(Integer id) {
         return configurationRepository.deleteByID(id);
     }
+
+    @Override
+    public int update(Integer id, DB db) {
+        return configurationRepository.update(id, modelMapper.map(db, DBEntity.class));
+    }
 }

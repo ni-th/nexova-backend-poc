@@ -38,4 +38,13 @@ public class ConfigurationController {
             return ResponseEntity.status(HttpStatus.ACCEPTED).body("DB deleted successfully !");
         }return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of("message", "Internal Server Error"));
     }
+
+    @PutMapping("db/update/{id}")
+    public ResponseEntity<?> updateDB(@PathVariable Integer id, @Valid @RequestBody DB db){
+        int update = configurationService.update(id,db);
+        if (update > 0) {
+            return ResponseEntity.status(HttpStatus.CREATED).body("Updated");
+        }return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(Map.of("message", "Internal Server Error"));
+    }
 }

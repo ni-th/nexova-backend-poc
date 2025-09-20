@@ -8,4 +8,5 @@ public interface ConfigurationRepository {
     int save(DBEntity db);
     List<DBEntity> findAll();
     int deleteByID(Integer id);
+    int update(Integer id, DBEntity map);
 }

@@ -30,4 +30,10 @@ public class ConfigurationRepositoryImpl implements ConfigurationRepository {
         String sql = "DELETE FROM databases_config WHERE id = ?";
         return jdbcTemplate.update(sql,id);
     }
+
+    @Override
+    public int update(Integer id, DBEntity db) {
+        String sql = "UPDATE databases_config SET host = ?, username = ?, port = ?, password = ?, database_name = ? WHERE id = ?";
+        return jdbcTemplate.update(sql, db.getHost(),db.getUsername(),db.getPort(),db.getPassword(),db.getDatabaseName(), id);
+    }
 }
