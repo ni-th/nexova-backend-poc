@@ -8,4 +8,5 @@ public interface DbConfigurationService {
     List<DB> findAll();
     int deleteById(Integer id);
     int update(Integer id, DB db);
+    Boolean isExists(String database);
 }

@@ -35,4 +35,12 @@ public class DbConfigurationRepositoryImpl implements DbConfigurationRepository 
         String sql = "UPDATE databases_config SET host = ?, username = ?, port = ?, password = ?, database_name = ? WHERE id = ?";
         return jdbcTemplate.update(sql, db.getHost(),db.getUsername(),db.getPort(),db.getPassword(),db.getDatabaseName(), id);
     }
+
+    @Override
+    public Boolean isExists(String database) {
+        String sql = "SELECT COUNT(*) FROM databases_config WHERE database_name = ?";
+        Integer count = jdbcTemplate.queryForObject(sql, Integer.class, database);
+        return count != null && count > 0;
+
+    }
 }

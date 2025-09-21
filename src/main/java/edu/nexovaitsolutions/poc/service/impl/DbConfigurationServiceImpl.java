@@ -41,4 +41,9 @@ public class DbConfigurationServiceImpl implements DbConfigurationService {
     public int update(Integer id, DB db) {
         return dbConfigurationRepository.update(id, modelMapper.map(db, DBEntity.class));
     }
+
+    @Override
+    public Boolean isExists(String database) {
+        return dbConfigurationRepository.isExists(database);
+    }
 }

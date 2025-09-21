@@ -8,4 +8,5 @@ public interface DbConfigurationRepository {
     List<DBEntity> findAll();
     int deleteByID(Integer id);
     int update(Integer id, DBEntity map);
+    Boolean isExists(String database);
 }

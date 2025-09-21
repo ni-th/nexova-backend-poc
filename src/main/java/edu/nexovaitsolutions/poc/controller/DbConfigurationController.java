@@ -21,9 +21,12 @@ public class DbConfigurationController {
 
     @PostMapping("db/add")
     public ResponseEntity<?> addDB(@Valid @RequestBody DB db){
+        if (dbConfigurationService.isExists(db.getDatabaseName())){
+            return ResponseEntity.status(409).body(Map.of("Conflict", "DB already exists"));
+        }
         int save = dbConfigurationService.save(db);
         if (save > 0) {
-            return ResponseEntity.status(HttpStatus.CREATED).body("Saved");
+            return ResponseEntity.status(HttpStatus.CREATED).body(Map.of("Success", "DB data is saved"));
         }return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(Map.of("message", "Internal Server Error"));
     }
@@ -46,6 +49,11 @@ public class DbConfigurationController {
             return ResponseEntity.status(HttpStatus.CREATED).body("Updated");
         }return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body(Map.of("message", "Internal Server Error"));
+    }
+
+    @GetMapping("db/exists")
+    public Boolean isExist(@RequestParam String database){
+        return dbConfigurationService.isExists(database);
     }
 
 }
