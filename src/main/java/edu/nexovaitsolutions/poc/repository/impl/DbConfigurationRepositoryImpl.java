@@ -1,7 +1,7 @@
 package edu.nexovaitsolutions.poc.repository.impl;
 
 import edu.nexovaitsolutions.poc.entity.DBEntity;
-import edu.nexovaitsolutions.poc.repository.ConfigurationRepository;
+import edu.nexovaitsolutions.poc.repository.DbConfigurationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -11,7 +11,7 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class ConfigurationRepositoryImpl implements ConfigurationRepository {
+public class DbConfigurationRepositoryImpl implements DbConfigurationRepository {
     private final JdbcTemplate jdbcTemplate;
     @Override
     public int save(DBEntity db) {

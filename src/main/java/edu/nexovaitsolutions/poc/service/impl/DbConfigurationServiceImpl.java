@@ -3,8 +3,8 @@ package edu.nexovaitsolutions.poc.service.impl;
 
 import edu.nexovaitsolutions.poc.dto.DB;
 import edu.nexovaitsolutions.poc.entity.DBEntity;
-import edu.nexovaitsolutions.poc.repository.ConfigurationRepository;
-import edu.nexovaitsolutions.poc.service.ConfigurationService;
+import edu.nexovaitsolutions.poc.repository.DbConfigurationRepository;
+import edu.nexovaitsolutions.poc.service.DbConfigurationService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -14,19 +14,19 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class ConfigurationServiceImpl implements ConfigurationService {
+public class DbConfigurationServiceImpl implements DbConfigurationService {
     private final ModelMapper modelMapper;
-    private final ConfigurationRepository configurationRepository;
+    private final DbConfigurationRepository dbConfigurationRepository;
 
     @Override
     public int save(DB db) {
-        return configurationRepository.save(modelMapper.map(db, DBEntity.class));
+        return dbConfigurationRepository.save(modelMapper.map(db, DBEntity.class));
     }
 
     @Override
     public List<DB> findAll() {
         List<DB> dbList =new ArrayList<>();
-        configurationRepository.findAll().forEach(dbEntity -> {
+        dbConfigurationRepository.findAll().forEach(dbEntity -> {
             dbList.add(modelMapper.map(dbEntity, DB.class));
         });
         return dbList;
@@ -34,11 +34,11 @@ public class ConfigurationServiceImpl implements ConfigurationService {
 
     @Override
     public int deleteById(Integer id) {
-        return configurationRepository.deleteByID(id);
+        return dbConfigurationRepository.deleteByID(id);
     }
 
     @Override
     public int update(Integer id, DB db) {
-        return configurationRepository.update(id, modelMapper.map(db, DBEntity.class));
+        return dbConfigurationRepository.update(id, modelMapper.map(db, DBEntity.class));
     }
 }

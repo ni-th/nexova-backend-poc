@@ -4,7 +4,7 @@ import edu.nexovaitsolutions.poc.entity.DBEntity;
 
 import java.util.List;
 
-public interface ConfigurationRepository {
+public interface DbConfigurationRepository {
     int save(DBEntity db);
     List<DBEntity> findAll();
     int deleteByID(Integer id);
