@@ -7,7 +7,6 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,17 +30,14 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
-    public ResponseEntity<ErrorResponse> handleInvalidFormat(HttpMessageNotReadableException ex) {
+    public ResponseEntity<String> handleInvalidFormat(HttpMessageNotReadableException ex) {
         String message = "Invalid input format";
 
         if (ex.getCause() instanceof com.fasterxml.jackson.databind.exc.InvalidFormatException invalidEx) {
             String fieldName = invalidEx.getPath().get(0).getFieldName();
             message = fieldName + " must be a number";
         }
-
-        ErrorResponse response = new ErrorResponse();
-        response.setMessage(message);
-        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
     }
 
 

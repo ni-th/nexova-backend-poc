@@ -1,13 +1,11 @@
 package edu.nexovaitsolutions.poc.repository.impl;
 
-
 import edu.nexovaitsolutions.poc.entity.EmailEntity;
 import edu.nexovaitsolutions.poc.repository.EmailConfigurationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 
 @Repository

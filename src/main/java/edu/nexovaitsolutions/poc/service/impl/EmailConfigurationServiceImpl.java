@@ -1,11 +1,9 @@
 package edu.nexovaitsolutions.poc.service.impl;
 
-
-import edu.nexovaitsolutions.poc.dto.DB;
 import edu.nexovaitsolutions.poc.dto.Email;
-import edu.nexovaitsolutions.poc.entity.DBEntity;
 import edu.nexovaitsolutions.poc.entity.EmailEntity;
 import edu.nexovaitsolutions.poc.repository.EmailConfigurationRepository;
+import edu.nexovaitsolutions.poc.service.EmailConfigurationService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -15,7 +13,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class EmailConfigurationServiceImpl implements edu.nexovaitsolutions.poc.service.EmailConfigurationService {
+public class EmailConfigurationServiceImpl implements EmailConfigurationService {
     private final ModelMapper modelMapper;
     final EmailConfigurationRepository emailConfigurationRepository;
 
