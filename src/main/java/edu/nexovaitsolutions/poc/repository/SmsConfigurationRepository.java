@@ -1,4 +1,4 @@
 package edu.nexovaitsolutions.poc.repository;
 
-public interface UserRepository {
+public interface SmsConfigurationRepository {
 }
