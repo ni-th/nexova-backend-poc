@@ -6,6 +6,7 @@ import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,6 +23,13 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
     }
 
+//    when a argument is not valid
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    public ResponseEntity<String> handleTypeMismatch(MethodArgumentTypeMismatchException ex) {
+        return ResponseEntity.badRequest()
+                .body("Invalid ID format: " + ex.getValue());
+    }
+
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<ErrorResponse> handleInvalidFormat(HttpMessageNotReadableException ex) {
         String message = "Invalid input format";
@@ -35,5 +43,6 @@ public class GlobalExceptionHandler {
         response.setMessage(message);
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
+
 
 }
