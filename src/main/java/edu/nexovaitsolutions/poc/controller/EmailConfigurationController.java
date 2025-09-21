@@ -1,6 +1,5 @@
 package edu.nexovaitsolutions.poc.controller;
 
-import edu.nexovaitsolutions.poc.dto.DB;
 import edu.nexovaitsolutions.poc.dto.Email;
 import edu.nexovaitsolutions.poc.service.EmailConfigurationService;
 import jakarta.validation.Valid;
@@ -13,6 +12,9 @@ import java.util.List;
 import java.util.Map;
 
 @RequiredArgsConstructor
+@RestController
+@RequestMapping("config")
+@CrossOrigin
 public class EmailConfigurationController {
 
     final EmailConfigurationService emailConfigurationService;
