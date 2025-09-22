@@ -12,7 +12,11 @@ import org.hibernate.validator.constraints.URL;
 public class DB {
     private Integer id;
     @NotBlank(message = "Host cannot be empty")
-    @URL(message = "Host name is invalid.")
+    @URL(message = "Host name is invalid. ex : http://abc.com")
+    @Pattern(
+            regexp = "^(http://|https://).+$",
+            message = "Host must start with http:// or https://"
+    )
     private String host;
     @NotBlank(message = "UserName cannot be empty")
     @Pattern(regexp = "^[a-zA-Z][A-Za-z0-9_]*$", message = "Username name is invalid. Name should be start with a letter and must contain a letter, number or _")
@@ -27,10 +31,8 @@ public class DB {
             regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!()-?><'\"/|;:`~]).{8,20}$",
             message = "Password must contain at least one digit, one lowercase, one uppercase, and one special character (@#$%^&+=!()-?><'\"/|;:`~)"
     )
-
     private String password;
     @NotBlank(message = "DatabaseName cannot be empty")
     @Pattern(regexp = "^[a-zA-Z][A-Za-z0-9_]*$", message = "Database name is invalid. Name should be start with a letter and must contain a letter, number or _")
-
     private String databaseName;
 }
